@@ -12,7 +12,7 @@ const cors = require('cors');
 
 app.use(cors({
     // origin: '*',
-    origin: ['http://localhost:80/','https://www.google.com' ],
+    origin: ['http://localhost:80/' ],
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
 
@@ -30,7 +30,7 @@ app.get('/api/login', (req,res)=> {
 
     mysqlx.getSession(config)
     .then(session => {
-        return session.sql(`call SP_getAllUsers("")`)
+        return session.sql(`call SP_getAllUsers("Barani")`)
         .execute()    
     })
     .then((result) => {
