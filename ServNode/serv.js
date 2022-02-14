@@ -43,7 +43,7 @@ app.get('/api/books', (req,res)=> {
     app.post('/api/books', (req, res)=> {
      
         const book = books.find(c => c.id === parseInt(req.body.id));
-        if (!book) res.send('{"error":"Data not found"}');
+        if (!book) res.send('{"title": "Data not found", "id": "Error"}');
         // const book = {
         //     id: books.length + 1,
         //     title: req.body.title

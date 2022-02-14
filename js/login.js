@@ -2,7 +2,7 @@
 function clickLogin()
 {
     let txtUser = document.querySelector("#txtUsrName").value;
-    if (txtUser.length < 3) { alert("Invalid User Name"); return;}
+    if (txtUser.length != 1) { alert("Invalid User Name"); return;}
 
     loginUser(txtUser);
     return false;
@@ -18,7 +18,7 @@ function loginUser(userName){
 
 function getLogin(data){
     let sp = document.querySelector(".output");
-    sp.innerHTML = data[0] + ' ' + data[1];
+    sp.innerHTML = data.id + ' ' + data.title;
     console.log(data);
 }
 
