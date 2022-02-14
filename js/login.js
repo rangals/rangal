@@ -11,10 +11,9 @@ function clickLogin()
 
 function loginUser(userName){
     dat = JSON.stringify({
-        uname: userName,
-        pwd: "hai"
+        id: userName
     });
-    postData("/api/login", dat, getLogin);
+    postData("/api/books", dat, getLogin);
 }
 
 function getLogin(data){

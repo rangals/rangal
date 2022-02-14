@@ -1,73 +1,56 @@
 const express = require('express');
-const conf = require('./../config.json');
-const mysqlx = require('@mysql/xdevapi');
+const dat = require('./../DB/data');
+// const mysqlx = require('@mysql/xdevapi');
 
 // const Joi = require('joi'); //used for validation
 const app = express();
 app.use(express.json());
-const dbDetails = conf["DB"];
+
+var books = dat["books"];
 
 
 const cors = require('cors');
 
 app.use(cors({
     // origin: '*',
-    origin: ['http://localhost:80/' ],
+    origin: ['http://localhost:8080/' ],
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
 
-const config = {
-    password: dbDetails.password,
-    user: dbDetails.user,
-    host: dbDetails.host,
-    port: dbDetails.port,
-    schema: dbDetails.schema
-};
-
-
-
-app.get('/api/login', (req,res)=> {
-
-    mysqlx.getSession(config)
-    .then(session => {
-        return session.sql(`call SP_getAllUsers("Barani")`)
-        .execute()    
-    })
-    .then((result) => {
-        res.send(result.fetchOne());//To fetch all data. fetchOne() to fetch one record at a time
-    });
-    });
- 
-//CREATE Request Handler
-app.post('/api/login', (req, res)=> {
- 
-    //const { error } = validateBook(req.body);
-
-    const usr = {
-        uname: req.body.uname,
-        pwd: req.body.pwd
-    };
-
-
-    mysqlx.getSession(config)
-    .then(session => {
-        return session.sql(`call SP_getAllUsers("${usr.uname}")`)
-        .execute()    
-    })
-    .then((result) => {
-        res.send(result.fetchOne());//To fetch all data. fetchOne() to fetch one record at a time
-    });
-});
- 
- 
-function validateBook(book) {
-// const schema = {
-// title: Joi.string().min(3).required()
+// const config = {
+//     password: dbDetails.password,
+//     user: dbDetails.user,
+//     host: dbDetails.host,
+//     port: dbDetails.port,
+//     schema: dbDetails.schema
 // };
-// return Joi.validator(book, schema);
- return false;
-}
- 
+
+
+app.get('/api/books', (req,res)=> {
+    res.send(books);
+    });
+     
+    //http://localhost:90/api/books/2
+    app.get('/api/books/:id', (req, res) => {
+    const book = books.find(c => c.id === parseInt(req.params.id));
+     
+    if (!book) res.status(404).send('<h2 style="font-family: Malgun Gothic; color: darkred;">Ooops... Cant find what you are looking for!</h2>');
+    res.send(book);
+    });
+    
+    //{"title": "new byox"}
+    //http://localhost:8080/api/books
+    app.post('/api/books', (req, res)=> {
+     
+        const book = books.find(c => c.id === parseInt(req.body.id));
+        if (!book) res.send('{"error":"Data not found"}');
+        // const book = {
+        //     id: books.length + 1,
+        //     title: req.body.title
+        // };
+        // books.push(book);
+        res.send(book);
+        });
 //PORT ENVIRONMENT VARIABLE
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}..`));
