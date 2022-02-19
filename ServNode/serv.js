@@ -13,7 +13,8 @@ const cors = require('cors');
 
 app.use(cors({
     // origin: '*',
-    origin: ['http://localhost:8080/' ],
+    //origin: ['http://15.207.210.23','http://172.26.7.55','http://172.26.7.55:80','http://15.207.210.23:80'],
+    origin: ['http://localhost:81/' ],
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }));
 
@@ -43,7 +44,7 @@ app.get('/api/books', (req,res)=> {
     app.post('/api/books', (req, res)=> {
      
         const book = books.find(c => c.id === parseInt(req.body.id));
-        if (!book) res.send('{"title": "Data not found", "id": "Error"}');
+        if (!book) res.send('{"title": "File not found", "id": "Error"}');
         // const book = {
         //     id: books.length + 1,
         //     title: req.body.title

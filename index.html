@@ -1,21 +1,22 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rangal Softwares</title>
     <link rel="stylesheet" href="css/rangal.css">
     <script src="js/rangal.js" defer></script>
     <script src="js/login.js" defer></script>
 </head>
-<body class="intro">
+
+<body class="intro night">
     <div class="logoIntro">
         <h1>Welcome to</h1>
         <div class="logoAnim logoR">
             <svg viewBox="25 15 115 120">
-                <polygon class="RLegShadow RlogoShadow"
-                    points="59.25,35.708 67.594,116.281 75.5,102.75 67.917,26.25" />
+                <polygon class="RLegShadow RlogoShadow" points="59.25,35.708 67.594,116.281 75.5,102.75 67.917,26.25" />
                 <path class="RShadow RlogoShadow" />
                 <path class="RFront letterR" />
                 <polygon class="RLeg letterR" points="57.583,116.85 67.58,116.289 59.25,35.667" />
@@ -27,7 +28,7 @@
                 <path class="SShadow SlogoShadow" />
                 <path class="SShadow1 SlogoShadow" />
                 <path class="SFront letterS" />
-            </svg> 
+            </svg>
             <span>oftwares</span>
         </div>
         <!-- <svg viewBox="25 15 115 120">
@@ -59,14 +60,10 @@
                 </div>
                 <div class="brandName">Rangal Softwares</div>
             </div>
-    
+
             <div class="toggle">
-                <label>
-                    <div class="mode">
-                        <input onclick="changeMode()" type="checkbox" />
-                    </div>
-                </label>
-                <!-- <label>Language:
+                <div>
+                    <!-- <label>Language:
                     <div class="lang">
                         <select onchange="changeLang()">
                             <option value="english">English</option>
@@ -74,45 +71,128 @@
                         </select>
                     </div>
                 </label> -->
+                </div>
+                <div>
+                    <label>
+                        <div class="mode">
+                            <input onclick="changeMode()" type="checkbox" />
+                        </div>
+                    </label>
+                </div>
             </div>
             <nav class="menu">
-                <ul>
+                <ul class="navlinks">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Our Services</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="#">About&nbsp;Us</a></li>
+                    <li><a href="#">Our&nbsp;Services</a></li>
+                    <li><a href="" onclick="displayLogin('block'); return false;"
+                            onkeypress="displayLogin('block'); return false;">Login</a></li>
                 </ul>
+                <button href="#" class="lnkbtn">Ξ</button>
             </nav>
+
         </div>
-        <input type="text" id="txtUsrName"/>
-        <span class="output"></span>
-    <!-- </header> -->
+        <!-- <input type="text" id="txtUsrName" />
+        <span class="output"></span> -->
+        <!-- </header> -->
         <section class="content">
             <div class="mainContent">
                 <p>Need a website?</p>
-                <p>Starting a website and moving your business online is easy now</p>  
-                <p>We are here to make it happen for you</p>  
-                <button onclick="clickLogin()" class="hero-btn">View More</button>
+                <p>Starting a website and moving your business online is easy now</p>
+                <p>We are here to make it happen for you</p>
+                <button class="hero-btn">View More</button>
                 <!-- தொடர்புக்கு -->
             </div>
-            <div class="moon"></div>
+            <div class="moon animate-moveleft"></div>
             <div class="flight">
-                <div class="flight1"></div>
-                <div class="flight2"></div>
-                <div class="flight3"></div> 
+                <div class="flight1 animate-moveleft1"></div>
+                <div class="flight2 animate-moveleft"></div>
+                <div class="flight3 animate-moveleft2"></div>
             </div>
         </section>
-        
+
         <footer>
-            <p>Phone:+91 9789-31-9696 | Email: </p>
+            <!-- <p>Phone:+91 9789-31-9696 | rangalsoftwares@gmail.com</p> -->
             <p>© 2021 Rangal</p>
         </footer>
+    </div>
+
+    <div id="divLogin" class="modal">
+
+        <form class="modal-content ">
+            <div class="logoleft">
+                <div class="imgcontainer logoShow">
+
+                    <svg viewBox="25 15 115 120">
+                        <polygon class="RLegShadow RlogoShadow"
+                            points="59.25,35.708 67.594,116.281 75.5,102.75 67.917,26.25" />
+                        <path class="RShadow RlogoShadow" />
+                        <path class="RFront letterR" />
+                        <path class="SShadow SlogoShadow" />
+                        <path class="SShadow1 SlogoShadow" />
+                        <path class="SFront letterS" />
+                        <polygon class="RLeg letterR" points="57.583,116.85 67.58,116.289 59.25,35.667" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="logincontainer">
+                <div>
+                <!-- <span onclick="document.getElementById('divLogin').style.display='none'" class="close"
+                title="Close Modal">&times;</span> -->
+                <input class="loginInput" id="txtLoginUsrName" autofocus type="text" required placeholder="User Name" />
+                <input class="loginInput" id="txtLoginPwd" type="password" required placeholder="Password" />
+                <!-- <div class="txtInput">
+                    <input type="text" required />
+                    <lbl>Username</lbl>
+                </div>
+                <div class="txtInput">
+                    <input type="password" required />
+                    <lbl>Password</lbl>
+                </div> -->
+            
+                <div class="loginSubmit">
+                    <button type="submit">Login</button>
+                    <button type="reset" onclick="displayLogin('none'); return false;"
+                        onkeypress="displayLogin('none'); return false;">Cancel</button>
+                </div>
+                <span class="psw"><a href="" onclick="displayRegister('block'); return false;"
+                        onkeypress="displayRegister('block'); return false;">Create new account</a></span>
+                <span class="psw"><a href="#">Forgot password</a></span>
+            </div>
+            </div>
+            <div class="signupcontainer">
+            <div>
+                <!-- <span onclick="document.getElementById('divLogin').style.display='none'" class="close"
+                title="Close Modal">&times;</span> -->
+                <input class="loginInput" id="txtRegUsrName" autofocus type="text" required placeholder="User Name" />
+                <input class="loginInput" id="txtRegPwd" type="password" required placeholder="Password" />
+                <!-- <div class="txtInput">
+                    <input type="text" required />
+                    <lbl>Username</lbl>
+                </div>
+                <div class="txtInput">
+                    <input type="password" required />
+                    <lbl>Password</lbl>
+                </div> -->
+                <input class="loginInput" id="txtRegEmail" type="email" required placeholder="Email" />
+                <input class="loginInput" id="txtRegMobile" type="text" placeholder="Mobile" />
+                <div class="loginSubmit">
+                    <button type="submit">Register</button>
+                    <button type="reset" onclick="displayRegister('none'); return false;"
+                        onkeypress="displayRegister('none'); return false;">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+        </form>
     </div>
     <div class="container">
         <table id="users"></table>
     </div>
-<script>
+    <script>
 
-</script>
+    </script>
 </body>
+
 </html>
