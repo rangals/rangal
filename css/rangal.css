@@ -512,6 +512,10 @@
     background-image:none;
 }
 
+.hideContent{
+    display: none;
+}
+
 
 /*--------------------------------------- Footer style ----------------------------------------------*/
 
@@ -685,6 +689,7 @@ ul li {
         justify-content: center;
         margin-left: -2000px;
         transition: .5s ease;
+        padding-left: 0;
     }
     
     .navlinks li{

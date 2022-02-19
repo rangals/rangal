@@ -1,25 +1,84 @@
+var servurl = 'http://localhost:91';
 
-function clickLogin()
+//--------------------------------------------------------------------------------
+//                              Login
+//--------------------------------------------------------------------------------
+function frmLogin()
 {
-    let txtUser = document.querySelector("#txtUsrName").value;
-    if (txtUser.length != 1) { alert("Invalid User Name"); return;}
+    let txtUser = document.querySelector("#txtLoginUsrName").value;
+    let txtPwd = document.querySelector("#txtLoginPwd").value;
+    if (txtUser.length < 2) { alert("User Name is too short"); return;}
+    if (txtPwd.length < 3) { alert("Password is too short"); return;}
 
-    loginUser(txtUser);
+    loginUser(txtUser, txtPwd);
     return false;
 }
 
 
-function loginUser(userName){
+function loginUser(userName, txtPwd){
     dat = JSON.stringify({
-        id: userName
+        un: userName
+     ,  pwd: txtPwd    
     });
-    postData("/api/books", dat, getLogin);
+    postData("/api/user", dat, getLogin);
 }
 
 function getLogin(data){
-    let sp = document.querySelector(".output");
-    sp.innerHTML = data.id + ' ' + data.title;
-    console.log(data);
+    // let sp = document.querySelector(".output");
+    // sp.innerHTML = data.id + ' ' + data.title;
+    alert(data.msg);
+    if(data.msg === "Login Success")
+    {
+        let lnkUser = document.querySelector("#lnkUser");
+        let lnkLogin = document.querySelector("#lnkLogin");
+        lnkLogin.classList.toggle('hideContent');
+        lnkUser.classList.toggle('hideContent');
+        displayLogin('none');
+    }
+    
+    return false;    
+}
+
+//--------------------------------------------------------------------------------
+//                              Register
+//--------------------------------------------------------------------------------
+
+function frmRegister(){
+    let txtRegUsrName = document.querySelector("#txtRegUsrName").value;
+    let txtRegPwd = document.querySelector("#txtRegPwd").value;
+    let txtRegEmail = document.querySelector("#txtRegEmail").value;
+    let txtRegMobile = document.querySelector("#txtRegMobile").value;
+
+    regUser(txtRegUsrName, txtRegPwd, txtRegEmail, txtRegMobile);
+    return false;
+}
+
+function regUser(userName, txtPwd, txtEmail, txtMobile){
+    dat = JSON.stringify({
+        un: userName
+     ,  pwd: txtPwd  
+     ,  email:    txtEmail
+     ,  phone:   txtMobile 
+    });
+    postData("/api/reguser", dat, getRegister);
+}
+
+function getRegister(data){
+    // let sp = document.querySelector(".output");
+    // sp.innerHTML = data.id + ' ' + data.title;
+    alert(data.msg);
+    // console.log(data.msg);
+    if(data.msg === "Success")
+    {
+        let lnkUser = document.querySelector("#lnkUser");
+        let lnkLogin = document.querySelector("#lnkLogin");
+        lnkLogin.classList.toggle('hideContent');
+        lnkUser.classList.toggle('hideContent');
+        displayRegister('none');
+        displayLogin('none');
+    }
+    
+    return false;    
 }
 
 //--------------------------------------------------------------------------------
@@ -28,7 +87,7 @@ function getLogin(data){
 function postData(url, data, fn)
 {
     //  Post request using fetch()
-    fetch(url, {
+    fetch(servurl+ url, {
             method: "POST",// Adding method type
             body: data, // Adding body or contents to send
             headers: { // Adding headers to the request
@@ -38,7 +97,7 @@ function postData(url, data, fn)
         .then((response) =>{ // Converting to JSON
              return response.json()})
         .then((json) => { // Displaying results to console
-            //console.log(json);
+            //alert(json);
             fn(json);//callback function
         });
         

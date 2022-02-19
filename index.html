@@ -85,8 +85,9 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#">About&nbsp;Us</a></li>
                     <li><a href="#">Our&nbsp;Services</a></li>
-                    <li><a href="" onclick="displayLogin('block'); return false;"
+                    <li id="lnkLogin"><a href="" onclick="displayLogin('block'); return false;"
                             onkeypress="displayLogin('block'); return false;">Login</a></li>
+                    <li id="lnkUser" class="hideContent"> <a href=""  >Logout</a> </li>
                 </ul>
                 <button href="#" class="lnkbtn">Ξ</button>
             </nav>
@@ -106,8 +107,8 @@
             <div class="moon animate-moveleft"></div>
             <div class="flight">
                 <div class="flight1 animate-moveleft1"></div>
-                <div class="flight2 animate-moveleft"></div>
-                <div class="flight3 animate-moveleft2"></div>
+                <!-- <div class="flight2 animate-moveleft"></div> -->
+                <!-- <div class="flight3 animate-moveleft2"></div>  -->
             </div>
         </section>
 
@@ -140,8 +141,8 @@
                 <div>
                 <!-- <span onclick="document.getElementById('divLogin').style.display='none'" class="close"
                 title="Close Modal">&times;</span> -->
-                <input class="loginInput" id="txtLoginUsrName" autofocus type="text" required placeholder="User Name" />
-                <input class="loginInput" id="txtLoginPwd" type="password" required placeholder="Password" />
+                <input class="loginInput" id="txtLoginUsrName" autofocus type="text" placeholder="User Name" />
+                <input class="loginInput" id="txtLoginPwd" type="password" placeholder="Password" />
                 <!-- <div class="txtInput">
                     <input type="text" required />
                     <lbl>Username</lbl>
@@ -152,7 +153,7 @@
                 </div> -->
             
                 <div class="loginSubmit">
-                    <button type="submit">Login</button>
+                    <button type="submit" onclick="frmLogin(); return false;">Login</button>
                     <button type="reset" onclick="displayLogin('none'); return false;"
                         onkeypress="displayLogin('none'); return false;">Cancel</button>
                 </div>
@@ -163,22 +164,12 @@
             </div>
             <div class="signupcontainer">
             <div>
-                <!-- <span onclick="document.getElementById('divLogin').style.display='none'" class="close"
-                title="Close Modal">&times;</span> -->
-                <input class="loginInput" id="txtRegUsrName" autofocus type="text" required placeholder="User Name" />
-                <input class="loginInput" id="txtRegPwd" type="password" required placeholder="Password" />
-                <!-- <div class="txtInput">
-                    <input type="text" required />
-                    <lbl>Username</lbl>
-                </div>
-                <div class="txtInput">
-                    <input type="password" required />
-                    <lbl>Password</lbl>
-                </div> -->
-                <input class="loginInput" id="txtRegEmail" type="email" required placeholder="Email" />
+                <input class="loginInput" id="txtRegUsrName" autofocus type="text" placeholder="User Name" />
+                <input class="loginInput" id="txtRegPwd" type="password" placeholder="Password" />
+                <input class="loginInput" id="txtRegEmail" type="email" placeholder="Email" />
                 <input class="loginInput" id="txtRegMobile" type="text" placeholder="Mobile" />
                 <div class="loginSubmit">
-                    <button type="submit">Register</button>
+                    <button type="submit" onclick="frmRegister(); return false;">Register</button>
                     <button type="reset" onclick="displayRegister('none'); return false;"
                         onkeypress="displayRegister('none'); return false;">Cancel</button>
                 </div>
