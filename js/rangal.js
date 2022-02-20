@@ -43,9 +43,11 @@ const btn = document.querySelector(".lnkbtn");
 btn.addEventListener('click',()=>{
     var link = document.querySelector('.navlinks');
     var menubar = document.querySelector('.menu');
+    var viewBtn = document.querySelector('.hero-btn');
     link.classList.toggle('mobile-menu');//Change menu display
     menubar.classList.toggle('menu-back'); //Change background
     btn.classList.toggle('menu-index'); //change button index
+    viewBtn.classList.toggle('displayNone');
 })
 
 //--------------------------------Login model-------------------------------------------------
@@ -63,7 +65,7 @@ function displayLogin(disp)
 {
     
     var modal = document.getElementById('divLogin');
-    var modalForm = document.querySelector('#divLogin form');
+    var modalForm = document.querySelector('#divLogin div');
     modalForm.classList.toggle("animate-in");
 
     // modalForm.classList.toggle('animate');

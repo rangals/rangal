@@ -1,4 +1,5 @@
-var servurl = 'http://localhost:91';
+ var servurl = 'http://15.207.210.23:80';
+//var servurl = 'http://localhost:91';
 
 //--------------------------------------------------------------------------------
 //                              Login
@@ -48,6 +49,10 @@ function frmRegister(){
     let txtRegPwd = document.querySelector("#txtRegPwd").value;
     let txtRegEmail = document.querySelector("#txtRegEmail").value;
     let txtRegMobile = document.querySelector("#txtRegMobile").value;
+
+    if (txtRegUsrName.length < 2) { alert("User Name is too short"); return;}
+    if (txtRegPwd.length < 3) { alert("Password is too short"); return;}
+    if (txtRegEmail.length < 1) { alert("Email is required"); return;}
 
     regUser(txtRegUsrName, txtRegPwd, txtRegEmail, txtRegMobile);
     return false;

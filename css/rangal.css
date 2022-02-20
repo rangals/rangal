@@ -122,7 +122,7 @@
   }
 
 /* The Modal (background) */
-.modal {
+.modal, .forMenuModal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -272,7 +272,7 @@
 .logoAnim{
     display: flex;
     align-items: center;
-    font-size: 90px;
+    font-size: 5em;
     color: #091556;
 }
 
@@ -665,6 +665,21 @@ ul li {
         right: 1em;
         top: 2.5em;
         z-index:1;
+    }
+
+    .logoIntro svg{
+        width: 50px;
+    }
+    .logoAnim{
+        font-size: 3em;
+    }
+
+    .displayNone{
+        display: none;
+    }
+
+    .displayBlock{
+        display: block;
     }
     
     .header{

@@ -1,5 +1,6 @@
 const express = require("express");
 var fs = require("fs");
+var bcrypt = require("bcryptjs");
 const dat = require("./../DB/data");
 // const mysqlx = require('@mysql/xdevapi');
 
@@ -58,9 +59,13 @@ app.post("/api/user", (req, res) => {
     let usr = valjson["users"].find((c) => c.name === req.body.un);
     //console.log(usr);
     if (!usr) res.send('{"msg": "Incorrect Username/Password", "id": "Error"}');
-    if (usr.pwd === req.body.pwd)
-      res.send(`{"msg": "Login Success", "id": ${usr.id}}`);
-    else res.send('{"msg": "Incorrect Username/Password", "id": "Error"}');
+    var passwordIsValid = bcrypt.compareSync(
+      req.body.pwd,
+      usr.pwd
+    );
+    if (!passwordIsValid)
+    res.send('{"msg": "Incorrect Username/Password", "id": "Error"}');
+    else res.send(`{"msg": "Login Success", "id": ${usr.id}}`);
     // res.send(usr);
   });
 
@@ -87,7 +92,7 @@ app.post("/api/reguser", (req, res) => {
       const newUsr = {
         name: req.body.un,
         id: usrid,
-        pwd: req.body.pwd,
+        pwd: bcrypt.hashSync(req.body.pwd, 8),
         email: req.body.email,
         mobile: req.body.phone,
       };

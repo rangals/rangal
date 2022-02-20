@@ -2,7 +2,7 @@
   "name": "s3",
   "version": "1.0.0",
   "description": "",
-  "main": "index.html",
+  "main": "rangal/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@mysql/xdevapi": "^8.0.28",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "joi": "^17.5.0"
